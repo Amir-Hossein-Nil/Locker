@@ -96,6 +96,7 @@ void showMainPage() {
 
 void handleMainPageInput(char key) {
   if (key == '*') {
+    Serial.print("MainPageInput");
     // Start new box process
     selectedAction = 1;
     phone_number = "";
@@ -104,6 +105,8 @@ void handleMainPageInput(char key) {
     lcd.print("Enter phone #:");
     lcd.setCursor(0, 1);
   } else if (key == '#') {
+    Serial.print("NewBoxInput");
+
     // Start unlock box process
     selectedAction = 2;
     showLockSelection();
