@@ -54,6 +54,11 @@ void setup() {
 
   // Show main page
   showMainPage();
+  Serial.print("start");
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Welcome");
+  delay(1000);
 }
 
 void loop() {
