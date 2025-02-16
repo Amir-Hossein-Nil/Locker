@@ -287,21 +287,21 @@ void unlockSpecificLock(int lockNumber) {
   }
 }
 
-// void checkLockAutoOpen() {
-//   if (lockOpenTime > 0 && (millis() - lockOpenTime >= LOCK_OPEN_DURATION)) {
-//     if (storedPasswords[0] = "") {
-//       unlockSpecificLock(1);
-//       if (storedPasswords[1] = "") {
-//         unlockSpecificLock(2);
-//       }
-//       if (storedPasswords[2] = "") {
-//         unlockSpecificLock(3);
-//       }
-//       if (storedPasswords[3] = "") {
-//         unlockSpecificLock(4);
-//       }
-//     }
-//   }
-//   showMainPage();
-//   lockOpenTime = 0;
-// }
+void checkLockAutoOpen() {
+  if (lockOpenTime > 0 && (millis() - lockOpenTime >= LOCK_OPEN_DURATION)) {
+    if (storedPasswords[0] = "") {
+      unlockSpecificLock(1);
+      if (storedPasswords[1] = "") {
+        unlockSpecificLock(2);
+      }
+      if (storedPasswords[2] = "") {
+        unlockSpecificLock(3);
+      }
+      if (storedPasswords[3] = "") {
+        unlockSpecificLock(4);
+      }
+    }
+  }
+  showMainPage();
+  lockOpenTime = 0;
+}
