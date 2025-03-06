@@ -8,6 +8,11 @@ const int lock2 = 7;
 const int lock3 = 8;
 const int lock4 = 9;
 
+const int Led1 = 6;
+const int Led2 = 7;
+const int Led3 = 8;
+const int Led4 = 9;
+
 // State and tracking variables
 int selectedLock = 0;
 int selectedAction = 0;  // 0: main page, 1: new box, 2: unlock box
@@ -59,6 +64,7 @@ void setup() {
   lcd.setCursor(0, 0);
   lcd.print("Welcome");
   delay(1000);
+  showMainPage();
 }
 
 void loop() {
@@ -73,6 +79,11 @@ void loop() {
   // Handle lock auto-close
   checkLockAutoOpen();
   lockOpenTime = millis();
+
+  // unlockSpecificLock(1);
+  // unlockSpecificLock(2);
+  // unlockSpecificLock(3);
+  // unlockSpecificLock(4);
 }
 
 void handleKeyPress(char key) {
@@ -278,19 +289,34 @@ void handleUnlockBoxInput(char key) {
 void unlockSpecificLock(int lockNumber) {
   switch (lockNumber) {
     case 1:
+      digitalWrite(lock1, LOW);
+      digitalWrite(Led1, HIGH);
       digitalWrite(lock1, HIGH);
       break;
     case 2:
+      digitalWrite(lock2, LOW);
+      digitalWrite(Led2, HIGH);
       digitalWrite(lock2, HIGH);
+
+
       break;
     case 3:
+      digitalWrite(lock3, LOW);
+      digitalWrite(Led3, HIGH);
       digitalWrite(lock3, HIGH);
+
+
       break;
     case 4:
+      digitalWrite(lock4, LOW);
+      digitalWrite(Led4, HIGH);
       digitalWrite(lock4, HIGH);
+
       break;
   }
 }
+
+
 
 void checkLockAutoOpen() {
   if (lockOpenTime > 0 && (millis() - lockOpenTime >= LOCK_OPEN_DURATION)) {
@@ -306,7 +332,7 @@ void checkLockAutoOpen() {
         unlockSpecificLock(4);
       }
     }
+    showMainPage();
   }
-  showMainPage();
   lockOpenTime = 0;
 }
